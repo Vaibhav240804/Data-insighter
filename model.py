@@ -50,7 +50,7 @@ def main():
             i += 1
 
         st.write("Generating the insights from given input...")       
-        user_query = "plot graphs for {text}"
+        user_query = f"plot graphs for {text}"
         textgen_config = TextGenerationConfig(n=2, temperature=0.2)
         charts = lida.visualize(summary=summary, goal=user_query, textgen_config=textgen_config)
         for chart in charts:
@@ -85,8 +85,8 @@ def main():
             plots(query)
             with st.spinner("Processing your question..."):
                 chat_history = []
-                result = qa.invoke({"question": query, "chat_history": chat_history})
-                st.write("Response:", result['answer'])
+                # result = qa.invoke({"question": query, "chat_history": chat_history})
+                # st.write("Response:", result['answer'])
 
 if __name__ == "__main__":
     main()
