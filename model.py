@@ -7,6 +7,7 @@ from langchain_community.vectorstores import FAISS
 from langchain_community.llms import CTransformers
 from langchain.chains import ConversationalRetrievalChain
 from lida import Manager, TextGenerationConfig , llm  
+# load .env
 
 def main():
     st.set_page_config(page_title="Data Insighter")
@@ -15,7 +16,8 @@ def main():
     DB_FAISS_PATH = "vectorstore/db_faiss"
     TEMP_DIR = "temp"
     # set openAI_API key in environment variable
-    os.environ["OPENAI_API"] = "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"
+    # os.environ["OPENAI_API"] = os.getenv("OPENAI_API")
+    # st.secrets["openai_api"] = os.getenv("OPENAI_API")
     if not os.path.exists(TEMP_DIR):
         os.makedirs(TEMP_DIR)
 
@@ -84,11 +86,11 @@ def main():
         st.write("Enter your query:")
         query = st.text_input("Input Prompt:")
         if query:
-            plots(query)
+            # plots(query)
             with st.spinner("Processing your question..."):
                 chat_history = []
-                # result = qa.invoke({"question": query, "chat_history": chat_history})
-                # st.write("Response:", result['answer'])
+                result = qa.invoke({"question": query, "chat_history": chat_history})
+                st.write("Response:", result['answer'])
 
 if __name__ == "__main__":
     main()
