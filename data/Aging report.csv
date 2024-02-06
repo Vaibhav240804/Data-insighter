@@ -1,4 +1,4 @@
-Product Code,Product Name,Category,Quantity,Unit Price,Total Value,Date Added,Days in Stock,Supplier,Location,Sales Last Month
+Product_Code,Product_Name,Category,Quantity,Unit_Price,Total_Value,Date_Added,Days_in_Stock,Supplier,Location,Sales_Last_Month
 ABC001,Laptop,Electronics,50,800,40000,01-12-2023,67,Supplier A,Warehouse 1,20
 XYZ002,Smartphone,Electronics,100,600,60000,15-11-2023,94,Supplier B,Warehouse 2,40
 DEF003,Office Chair,Furniture,20,150,3000,30-11-2023,72,Supplier C,Warehouse 1,10
