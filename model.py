@@ -22,7 +22,6 @@ def main():
 
     
     if uploaded_file is not None:
-        st.write(f"Using CSV file: {uploaded_file}")
         file_path = uploaded_file
         print("File Path:", file_path)
 
@@ -33,8 +32,7 @@ def main():
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=20)
         text_chunks = text_splitter.split_documents(data)
 
-        st.write(f"Total text chunks: {len(text_chunks)}")
-
+        
         embeddings = HuggingFaceEmbeddings(model_name='sentence-transformers/all-MiniLM-L6-v2')
         docsearch = FAISS.from_documents(text_chunks, embeddings)
         docsearch.save_local(DB_FAISS_PATH)
