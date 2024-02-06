@@ -1,0 +1,14 @@
+Product Code,Product Name,Category,Quantity,Unit Price,Total Value,Date Added,Days in Stock,Supplier,Location,Sales Last Month
+ABC001,Laptop,Electronics,50,800,40000,01-12-2023,67,Supplier A,Warehouse 1,20
+XYZ002,Smartphone,Electronics,100,600,60000,15-11-2023,94,Supplier B,Warehouse 2,40
+DEF003,Office Chair,Furniture,20,150,3000,30-11-2023,72,Supplier C,Warehouse 1,10
+GHI004,Printer,Electronics,30,300,9000,25-10-2023,128,Supplier A,Warehouse 3,15
+JKL005,Desk,Furniture,10,250,2500,10-12-2023,58,Supplier D,Warehouse 2,5
+MNO006,Headphones,Electronics,40,100,4000,20-09-2023,139,Supplier B,Warehouse 3,25
+PQR007,Tablet,Electronics,70,400,28000,15-08-2023,174,Supplier C,Warehouse 1,30
+STU008,Filing Cabinet,Furniture,15,200,3000,01-10-2023,129,Supplier D,Warehouse 2,8
+VWX009,Monitor,Electronics,60,200,12000,01-09-2023,160,Supplier E,Warehouse 1,12
+YZA010,Keyboard,Electronics,80,50,4000,20-10-2023,132,Supplier F,Warehouse 2,35
+BCD011,Sofa,Furniture,15,500,7500,10-08-2023,190,Supplier G,Warehouse 3,5
+EFG012,Camera,Electronics,25,400,10000,15-07-2023,203,Supplier H,Warehouse 1,20
+HIJ013,Printer Ink,Office Supplies,50,20,1000,05-11-2023,113,Supplier I,Warehouse 2,15
