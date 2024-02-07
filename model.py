@@ -6,7 +6,7 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_community.llms import CTransformers
 from langchain.chains import ConversationalRetrievalChain
-from lida import Manager, TextGenerationConfig , llm  
+from lida import Manager, TextGenerationConfig
 
 def main():
     st.set_page_config(page_title="Data Insighter")
@@ -14,18 +14,16 @@ def main():
     
     DB_FAISS_PATH = "vectorstore/db_faiss"
     TEMP_DIR = "temp"
-    # set openAI_API key in environment variable
-    os.environ["OPENAI_API"] = "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"
     if not os.path.exists(TEMP_DIR):
         os.makedirs(TEMP_DIR)
-
     uploaded_file = "data/Aging report.csv"
     print("Uploaded File:", uploaded_file)
 
-
     def plots(text):
-        # goals can also be based on a persona
+        # Initialize LIDA manager
         lida = Manager()
+        
+        # Define text generation configuration
         textgen_config = TextGenerationConfig(
             max_tokens=50,
             temperature=0.7,
@@ -33,7 +31,11 @@ def main():
             frequency_penalty=0.0,
             presence_penalty=0.0
         )
+        
+        # Summarize data
         summary = lida.summarize("dummy.csv", textgen_config=textgen_config)
+        
+        # Define persona and generate personal goals
         persona = "a desk officer at fertilizers company who aims to minimize age of stock(i.e. selling generated product quickely, and not keeping it for too long) wants your help to navigate through given data such that he can make better decisions for his aim."
         personal_goals = lida.goals(summary, n=5, persona=persona, textgen_config=textgen_config)
 
@@ -67,7 +69,6 @@ def main():
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=20)
         text_chunks = text_splitter.split_documents(data)
 
-        
         embeddings = HuggingFaceEmbeddings(model_name='sentence-transformers/all-MiniLM-L6-v2')
         docsearch = FAISS.from_documents(text_chunks, embeddings)
         docsearch.save_local(DB_FAISS_PATH)
@@ -82,11 +83,11 @@ def main():
         st.write("Enter your query:")
         query = st.text_input("Input Prompt:")
         if query:
-            plots(query)
             with st.spinner("Processing your question..."):
-                chat_history = []
-                # result = qa.invoke({"question": query, "chat_history": chat_history})
-                # st.write("Response:", result['answer'])
+                chat_history = []  # Initialize conversation history
+                result = qa.invoke({"question": query, "chat_history": chat_history})
+
+                st.write("Response:", result['answer'])
 
 if __name__ == "__main__":
     main()

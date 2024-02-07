@@ -2,7 +2,7 @@ from lida import Manager
 import pandas as pd
 
 # Load your data (replace with your data source)
-data = pd.read_csv("dummy.csv")
+data = pd.read_csv("Aging report.csv")
 
 # Initialize LIDA manager
 manager = Manager()
